@@ -4,7 +4,6 @@
 master<br>
 [![hydrography: inference via ac-repatterning/arc-cnn models](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml)
 
-<br>
 
 develop<br>
 [![hydrography: inference via ac-repatterning/arc-cnn models](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml)
