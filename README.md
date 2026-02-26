@@ -1,6 +1,16 @@
 
 <br>
 
+master<br>
+[![hydrography: inference via ac-repatterning/arc-cnn models](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml)
+
+<br>
+
+develop<br>
+[![hydrography: inference via ac-repatterning/arc-cnn models](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml)
+
+<br>
+
 **Inference**
 
 Via an applicable infrastructure set-up, e.g., via an Amazon Web Services EC2 (Elastic Compute Cloud) machine with <abbr title="Compute Unified Device Architecture">CUDA</abbr>[^1] graphics processing units:
