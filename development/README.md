@@ -2,8 +2,7 @@
 
 ## Environments
 
-> [!NOTE]
-> [NVIDIA Images](https://catalog.ngc.nvidia.com/containers?filters=&orderBy=scoreDESC&query=tensorflow&page=&pageSize=)
+[NVIDIA Images](https://catalog.ngc.nvidia.com/containers?filters=&orderBy=scoreDESC&query=tensorflow&page=&pageSize=)
 
 <br>
 

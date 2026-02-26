@@ -2,13 +2,12 @@
 <br>
 
 master<br>
-[![Hydrography: Inference ↠ Long Short-Term Memory Models [repatterning/arc-rnn-lstm]](https://github.com/repatterning/arc-rnn-lstm-inference/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/repatterning/arc-rnn-lstm-inference/actions/workflows/main.yml)
+[![hydrography: inference via ac-repatterning/arc-cnn models](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml)
+
 
 develop<br>
-[![Hydrography: Inference ↠ Long Short-Term Memory Models [repatterning/arc-rnn-lstm]](https://github.com/repatterning/arc-rnn-lstm-inference/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/repatterning/arc-rnn-lstm-inference/actions/workflows/main.yml)
+[![hydrography: inference via ac-repatterning/arc-cnn models](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/ac-repatterning/arc-cnn-inference/actions/workflows/main.yml)
 
-
-<br>
 <br>
 
 **Inference**
@@ -16,10 +15,10 @@ develop<br>
 Via an applicable infrastructure set-up, e.g., via an Amazon Web Services EC2 (Elastic Compute Cloud) machine with <abbr title="Compute Unified Device Architecture">CUDA</abbr>[^1] graphics processing units:
 
 ```shell
-docker pull ghcr.io/repatterning/arc-rnn-lstm-inference:master
+docker pull ghcr.io/ac-repatterning/arc-cnn-inference:master
 
 docker run --rm --gpus all --shm-size=15gb -e AWS_DEFAULT_REGION={region.code} \
-  NVIDIA_DRIVER_CAPABILITIES=all ghcr.io/repatterning/arc-rnn-lstm-inference:master \
+  NVIDIA_DRIVER_CAPABILITIES=all ghcr.io/ac-repatterning/arc-cnn-inference:master \
     src/main.py --codes '...,...' --request ... && sudo shutdown
 ```
 
