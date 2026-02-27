@@ -95,7 +95,7 @@ class Estimate:
         predictions: np.ndarray = model.predict(x=x_matrix)
 
         # Reconfiguring
-        frame = self.__reconfigure(design=master.transforms, predictions=predictions)
+        frame = self.__reconfigure(design=master.transforms, predictions=predictions.squeeze())
 
         # Original & Estimates
         __original = master.data.copy().iloc[-predictions.shape[0]:, :]
