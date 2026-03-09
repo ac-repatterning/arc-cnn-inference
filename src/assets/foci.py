@@ -1,9 +1,11 @@
 """Module foci.py"""
 import datetime
 import logging
+import zoneinfo
 
 import pandas as pd
 
+import config
 import src.elements.s3_parameters as s3p
 import src.elements.text_attributes as txa
 import src.functions.cache
@@ -24,13 +26,14 @@ class Foci:
 
         self.__s3_parameters = s3_parameters
         self.__streams = src.functions.streams.Streams()
+        self.__configurations = config.Config()
 
         # For casting the date & time fields
         self.__doublet = {'issued_date': 'ISO8601', 'modified': 'ISO8601',
                           'starting': 'ISO8601', 'ending': 'ISO8601'}
 
         # Time: Or datetime.datetime.now(tz=pytz.utc)
-        self.__stamp = pd.Timestamp(datetime.datetime.now(), tz='UTC')
+        self.__stamp = pd.Timestamp(datetime.datetime.now(), tz=zoneinfo.ZoneInfo('UTC'))
 
     def __filtering(self, warnings: pd.DataFrame) -> pd.DataFrame:
         """
@@ -43,7 +46,6 @@ class Foci:
         instances = warnings[['issued_date', 'warning_id']].drop_duplicates()
         instances.sort_values(by='issued_date', ascending=True, inplace=True)
         elements = instances.iloc[-1, :].squeeze()
-        logging.info('%s: %s', elements.warning_id, elements.issued_date)
 
         conditionals = ((warnings['warning_id'] == elements.warning_id) &
                         (warnings['ending'] >= self.__stamp))
@@ -63,14 +65,14 @@ class Foci:
 
         return warnings
 
-    def __get_warnings(self) -> pd.DataFrame:
+    def __get_warning_signals(self) -> pd.DataFrame:
         """
         Reads the library, data file, of warnings.
 
         :return:
         """
 
-        uri = f's3://{self.__s3_parameters.internal}/warning/data.csv'
+        uri = f's3://{self.__s3_parameters.internal}/{self.__configurations.signals_key}'
         text = txa.TextAttributes(uri=uri, header=0)
 
         return self.__streams.read(text=text)
@@ -81,7 +83,7 @@ class Foci:
         :return:
         """
 
-        warnings = self.__get_warnings()
+        warnings = self.__get_warning_signals()
         warnings = self.__casting(warnings=warnings.copy())
         warnings = self.__filtering(warnings=warnings.copy())
 
