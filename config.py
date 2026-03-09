@@ -39,6 +39,12 @@ class Config:
 
 
         '''
+        Warning Signals Areas
+        '''
+        self.signals_key = 'signals/_data.csv'
+
+
+        '''
         Local Paths
         '''
         self.data_ = os.path.join(os.getcwd(), 'data')
