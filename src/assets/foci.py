@@ -32,8 +32,8 @@ class Foci:
         self.__doublet = {'issued_date': 'ISO8601', 'modified': 'ISO8601',
                           'starting': 'ISO8601', 'ending': 'ISO8601'}
 
-        # Time: Or datetime.datetime.now(tz=pytz.utc)
-        self.__stamp = pd.Timestamp(datetime.datetime.now(), tz=zoneinfo.ZoneInfo('UTC'))
+        # Time: datetime.datetime.now(tz=pytz.utc) | pd.Timestamp(datetime.datetime.now(), tz=zoneinfo.ZoneInfo('UTC'))
+        self.__stamp = pd.Timestamp(datetime.datetime.now())
         logging.info('self.__stamp: %s', self.__stamp)
 
     def __filtering(self, warnings: pd.DataFrame) -> pd.DataFrame:
@@ -64,6 +64,7 @@ class Foci:
 
         for key, value in self.__doublet.items():
             warnings[key] = pd.to_datetime(warnings[key], format=value, utc=True)
+        logging.info(warnings)
 
         return warnings
 
