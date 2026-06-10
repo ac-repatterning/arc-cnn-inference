@@ -34,6 +34,7 @@ class Foci:
 
         # Time: Or datetime.datetime.now(tz=pytz.utc)
         self.__stamp = pd.Timestamp(datetime.datetime.now(), tz=zoneinfo.ZoneInfo('UTC'))
+        logging.info('self.__stamp: %s', self.__stamp)
 
     def __filtering(self, warnings: pd.DataFrame) -> pd.DataFrame:
         """
@@ -46,6 +47,7 @@ class Foci:
         instances = warnings[['issued_date', 'warning_id']].drop_duplicates()
         instances.sort_values(by='issued_date', ascending=True, inplace=True)
         elements = instances.iloc[-1, :].squeeze()
+        logging.info(warnings.loc[warnings['warning_id'] == elements.warning_id, :])
 
         conditionals = ((warnings['warning_id'] == elements.warning_id) &
                         (warnings['ending'] >= self.__stamp))
